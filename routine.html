@@ -4,284 +4,215 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Class Routine</title>
-    <!-- Modern Font -->
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
     <style>
-        :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --bg-body: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-            --accent-break: #f1f5f9;
-            --active-bg: #eff6ff;
-            --active-border: #3b82f6;
-            --row-alt: #f8fafc; /* Alternating row color */
-        }
-
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            box-sizing: border-box;
-        }
-
-        .routine-card {
-            background: var(--card-bg);
-            padding: 36px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
-            width: 100%;
-            max-width: 950px;
-            border: 1px solid var(--border-color);
-        }
-
-        .header-title {
-            text-align: center;
-            color: var(--text-main);
-            margin-top: 0;
-            margin-bottom: 24px;
-            font-size: 26px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 28px;
-        }
-
-        .controls label {
-            font-weight: 500;
-            color: var(--text-muted);
-            font-size: 14px;
-        }
-
-        select {
-            padding: 10px 18px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            font-size: 14px;
-            font-weight: 600;
-            outline: none;
-            cursor: pointer;
-            background-color: #ffffff;
-            color: var(--text-main);
-            transition: all 0.2s ease;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-        }
-
-        select:hover {
-            border-color: #cbd5e1;
-        }
-
-        select:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-        }
-
-        .table-container {
-            overflow-x: auto;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: center;
-            background: #ffffff;
-        }
-
-        th {
-            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
-            color: #ffffff;
-            font-weight: 600;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            padding: 16px 12px;
-            border: none;
-            transition: background 0.2s ease;
-        }
-
-        td {
-            padding: 14px 12px;
-            border-bottom: 1px solid var(--border-color);
-            border-right: 1px solid var(--border-color);
-            font-size: 14px;
-            font-weight: 500;
-            color: #334155;
-            transition: background-color 0.15s ease;
-        }
-
-        /* Alternating Row Color */
-        tbody tr:nth-child(even) td {
-            background-color: var(--row-alt);
-        }
-
-        td:last-child, th:last-child {
-            border-right: none;
-        }
-
-        tbody tr:last-child td {
-            border-bottom: none;
-        }
-
-        .period-col {
-            font-weight: 700;
+            background-color: #f8fafc;
             color: #1e293b;
-            text-align: center;
-            font-size: 13px;
-            width: 12%;
         }
 
-        tbody tr:nth-child(odd) .period-col {
+        .card-custom {
+            border: none;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+        }
+
+        .table-custom th {
             background-color: #f1f5f9;
+            color: #475569;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            padding: 1rem;
         }
 
-        tbody tr:nth-child(even) .period-col {
-            background-color: #e2e8f0;
+        .table-custom td {
+            padding: 1rem 0.75rem;
+            vertical-align: middle;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .period-header {
+            background-color: #f8fafc !important;
+            color: #0f172a !important;
+            font-weight: 700 !important;
+            width: 120px;
         }
 
         .break-row td {
-            background-color: var(--accent-break) !important;
+            background-color: #f1f5f9 !important;
             color: #64748b;
             font-weight: 700;
-            font-size: 13px;
+            font-size: 0.85rem;
             letter-spacing: 2px;
         }
 
-        /* Highlighting for selected Day column */
+        /* Active Selected Column Highlights */
         th.active-col {
-            background: var(--primary) !important;
+            background-color: #0d6efd !important;
             color: #ffffff !important;
         }
 
         td.active-col {
-            background-color: var(--active-bg) !important;
-            color: #1e40af !important;
+            background-color: #eff6ff !important;
+            color: #1d4ed8 !important;
             font-weight: 600;
         }
 
         .break-row td.active-col {
             background-color: #dbeafe !important;
+            color: #1e40af !important;
         }
 
-        /* Hiding unselected columns in single-day view */
         .col-hidden {
             display: none !important;
         }
 
         @media print {
-            body { background: none; padding: 0; }
-            .routine-card { box-shadow: none; border: none; padding: 0; width: 100%; }
-            .controls { display: none; }
+            .no-print { display: none !important; }
+            .card-custom { box-shadow: none !important; border: none !important; }
             .col-hidden { display: table-cell !important; }
+            body { background: white !important; }
         }
     </style>
 </head>
-<body>
+<body class="py-4 py-md-5">
 
-<div class="routine-card">
-    <h1 class="header-title">CLASS ROUTINE</h1>
+<div class="container max-width-lg">
+    <div class="row justify-content-center">
+        <div class="col-12 col-xl-10">
+            
+            <div class="card card-custom">
+                <!-- Card Header -->
+                <div class="header-gradient p-4 text-center text-white position-relative">
+                    <h2 class="fw-bold mb-0 tracking-tight">
+                        <i class="bi bi-calendar3 me-2"></i>CLASS ROUTINE
+                    </h2>
+                </div>
 
-    <div class="controls">
-        <label for="daySelect">Select View:</label>
-        <select id="daySelect" onchange="filterSchedule()">
-            <option value="ALL">Show Full Week</option>
-            <option value="SUNDAY">Sunday</option>
-            <option value="MONDAY">Monday</option>
-            <option value="TUESDAY">Tuesday</option>
-            <option value="WEDNESDAY">Wednesday</option>
-            <option value="THURSDAY">Thursday</option>
-        </select>
-    </div>
+                <!-- Controls Body -->
+                <div class="card-body p-4">
+                    <div class="row justify-content-center align-items-center g-3 mb-4 no-print">
+                        <div class="col-auto">
+                            <label for="daySelect" class="col-form-label fw-semibold text-secondary">
+                                <i class="bi bi-funnel-fill me-1"></i>Select View:
+                            </label>
+                        </div>
+                        <div class="col-auto">
+                            <select id="daySelect" class="form-select form-select-md shadow-sm border-secondary-subtle" onchange="filterSchedule()">
+                                <option value="ALL">Show Full Week</option>
+                                <option value="SUNDAY">Sunday</option>
+                                <option value="MONDAY">Monday</option>
+                                <option value="TUESDAY">Tuesday</option>
+                                <option value="WEDNESDAY">Wednesday</option>
+                                <option value="THURSDAY">Thursday</option>
+                            </select>
+                        </div>
+                    </div>
 
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 12%;">Period</th>
-                    <th data-day="SUNDAY">SUNDAY</th>
-                    <th data-day="MONDAY">MONDAY</th>
-                    <th data-day="TUESDAY">TUESDAY</th>
-                    <th data-day="WEDNESDAY">WEDNESDAY</th>
-                    <th data-day="THURSDAY">THURSDAY</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="period-col">Period 1</td>
-                    <td data-day="SUNDAY">Bengali I</td>
-                    <td data-day="MONDAY">Bengali I</td>
-                    <td data-day="TUESDAY">Bengali I</td>
-                    <td data-day="WEDNESDAY">Bengali II</td>
-                    <td data-day="THURSDAY">Bengali Cr. wr.</td>
-                </tr>
-                <tr>
-                    <td class="period-col">Period 2</td>
-                    <td data-day="SUNDAY">Library</td>
-                    <td data-day="MONDAY">Music</td>
-                    <td data-day="TUESDAY">Art</td>
-                    <td data-day="WEDNESDAY">Drama</td>
-                    <td data-day="THURSDAY">Games</td>
-                </tr>
-                <tr>
-                    <td class="period-col">Period 3</td>
-                    <td data-day="SUNDAY">Eng. Lang</td>
-                    <td data-day="MONDAY">Eng. Lang</td>
-                    <td data-day="TUESDAY">Eng. Lang</td>
-                    <td data-day="WEDNESDAY">Eng Cr. wr.</td>
-                    <td data-day="THURSDAY">Eng Cr. wr.</td>
-                </tr>
-                <tr class="break-row">
-                    <td class="period-col">BREAK</td>
-                    <td data-day="SUNDAY">BREAK</td>
-                    <td data-day="MONDAY">BREAK</td>
-                    <td data-day="TUESDAY">BREAK</td>
-                    <td data-day="WEDNESDAY">BREAK</td>
-                    <td data-day="THURSDAY">BREAK</td>
-                </tr>
-                <tr>
-                    <td class="period-col">Period 5</td>
-                    <td data-day="SUNDAY">Science</td>
-                    <td data-day="MONDAY">Science</td>
-                    <td data-day="TUESDAY">Religion / MT</td>
-                    <td data-day="WEDNESDAY">Science</td>
-                    <td data-day="THURSDAY">Science</td>
-                </tr>
-                <tr>
-                    <td class="period-col">Period 6</td>
-                    <td data-day="SUNDAY">Maths</td>
-                    <td data-day="MONDAY">Maths</td>
-                    <td data-day="TUESDAY">Maths</td>
-                    <td data-day="WEDNESDAY">Maths</td>
-                    <td data-day="THURSDAY">Maths</td>
-                </tr>
-                <tr>
-                    <td class="period-col">Period 7</td>
-                    <td data-day="SUNDAY">Eng. Lit</td>
-                    <td data-day="MONDAY">Eng. S/D</td>
-                    <td data-day="TUESDAY">Eng. Lit</td>
-                    <td data-day="WEDNESDAY">Eng S/D</td>
-                    <td data-day="THURSDAY">Eng. Lit</td>
-                </tr>
-            </tbody>
-        </table>
+                    <!-- Responsive Table Container -->
+                    <div class="table-responsive rounded-3 border">
+                        <table class="table table-striped table-hover align-middle text-center table-custom mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="period-header">Period</th>
+                                    <th data-day="SUNDAY">SUNDAY</th>
+                                    <th data-day="MONDAY">MONDAY</th>
+                                    <th data-day="TUESDAY">TUESDAY</th>
+                                    <th data-day="WEDNESDAY">WEDNESDAY</th>
+                                    <th data-day="THURSDAY">THURSDAY</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="period-header">Period 1</td>
+                                    <td data-day="SUNDAY">Bengali I</td>
+                                    <td data-day="MONDAY">Bengali I</td>
+                                    <td data-day="TUESDAY">Bengali I</td>
+                                    <td data-day="WEDNESDAY">Bengali II</td>
+                                    <td data-day="THURSDAY">Bengali Cr. wr.</td>
+                                </tr>
+                                <tr>
+                                    <td class="period-header">Period 2</td>
+                                    <td data-day="SUNDAY">Library</td>
+                                    <td data-day="MONDAY">Music</td>
+                                    <td data-day="TUESDAY">Art</td>
+                                    <td data-day="WEDNESDAY">Drama</td>
+                                    <td data-day="THURSDAY">Games</td>
+                                </tr>
+                                <tr>
+                                    <td class="period-header">Period 3</td>
+                                    <td data-day="SUNDAY">Eng. Lang</td>
+                                    <td data-day="MONDAY">Eng. Lang</td>
+                                    <td data-day="TUESDAY">Eng. Lang</td>
+                                    <td data-day="WEDNESDAY">Eng Cr. wr.</td>
+                                    <td data-day="THURSDAY">Eng Cr. wr.</td>
+                                </tr>
+                                <tr class="break-row">
+                                    <td class="period-header">BREAK</td>
+                                    <td data-day="SUNDAY">BREAK</td>
+                                    <td data-day="MONDAY">BREAK</td>
+                                    <td data-day="TUESDAY">BREAK</td>
+                                    <td data-day="WEDNESDAY">BREAK</td>
+                                    <td data-day="THURSDAY">BREAK</td>
+                                </tr>
+                                <tr>
+                                    <td class="period-header">Period 5</td>
+                                    <td data-day="SUNDAY">Science</td>
+                                    <td data-day="MONDAY">Science</td>
+                                    <td data-day="TUESDAY">Religion / MT</td>
+                                    <td data-day="WEDNESDAY">Science</td>
+                                    <td data-day="THURSDAY">Science</td>
+                                </tr>
+                                <tr>
+                                    <td class="period-header">Period 6</td>
+                                    <td data-day="SUNDAY">Maths</td>
+                                    <td data-day="MONDAY">Maths</td>
+                                    <td data-day="TUESDAY">Maths</td>
+                                    <td data-day="WEDNESDAY">Maths</td>
+                                    <td data-day="THURSDAY">Maths</td>
+                                </tr>
+                                <tr>
+                                    <td class="period-header">Period 7</td>
+                                    <td data-day="SUNDAY">Eng. Lit</td>
+                                    <td data-day="MONDAY">Eng. S/D</td>
+                                    <td data-day="TUESDAY">Eng. Lit</td>
+                                    <td data-day="WEDNESDAY">Eng S/D</td>
+                                    <td data-day="THURSDAY">Eng. Lit</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Footer area -->
+                <div class="card-footer bg-white border-0 text-center pb-4 no-print">
+                    <button onclick="window.print()" class="btn btn-outline-secondary btn-sm rounded-pill px-3">
+                        <i class="bi bi-printer me-1"></i> Print Schedule
+                    </button>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
     const daysMap = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY"];
@@ -322,4 +253,3 @@
 
 </body>
 </html>
-
