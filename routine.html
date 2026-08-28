@@ -3,79 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class Routine</title>
-    <!-- Bootstrap 5 CSS -->
+    <title>Grade 2 Learning Adventure Routine</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
             color: #1e293b;
+            min-height: 100vh;
         }
 
         .card-custom {
             border: none;
-            border-radius: 1rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-radius: 1.5rem;
+            box-shadow: 0 15px 35px rgba(14, 165, 233, 0.12);
+            overflow: hidden;
         }
 
-        .header-gradient {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            border-top-left-radius: 1rem;
-            border-top-right-radius: 1rem;
+        .header-fun {
+            background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+            font-family: 'Fredoka', cursive;
+        }
+
+        .day-badge {
+            font-family: 'Fredoka', cursive;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
         }
 
         .table-custom th {
-            background-color: #f1f5f9;
-            color: #475569;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 0.5px;
+            font-family: 'Fredoka', cursive;
+            background-color: #f0f9ff;
+            color: #0369a1;
+            font-size: 1.05rem;
             padding: 1rem;
         }
 
         .table-custom td {
-            padding: 1rem 0.75rem;
+            padding: 1rem 0.5rem;
             vertical-align: middle;
-            font-size: 0.95rem;
-            font-weight: 500;
+            font-weight: 700;
         }
 
         .period-header {
             background-color: #f8fafc !important;
-            color: #0f172a !important;
-            font-weight: 700 !important;
+            color: #475569 !important;
+            font-family: 'Fredoka', cursive;
+            font-size: 1rem;
             width: 120px;
         }
 
+        /* Subject Cards Styling */
+        .subject-tag {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .tag-bengali { background-color: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+        .tag-english { background-color: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
+        .tag-maths   { background-color: #fefce8; color: #ca8a04; border: 1px solid #fef08a; }
+        .tag-science { background-color: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+        .tag-art     { background-color: #fdf4ff; color: #c026d3; border: 1px solid #f5d0fe; }
+        .tag-music   { background-color: #fff7ed; color: #ea580c; border: 1px solid #ffedd5; }
+        .tag-games   { background-color: #ecfeff; color: #0891b2; border: 1px solid #a5f3fc; }
+        .tag-rel     { background-color: #f5f3ff; color: #7c3aed; border: 1px solid #ddd6fe; }
+
         .break-row td {
-            background-color: #f1f5f9 !important;
-            color: #64748b;
-            font-weight: 700;
-            font-size: 0.85rem;
+            background-color: #fff7ed !important;
+            color: #c2410c;
+            font-family: 'Fredoka', cursive;
+            font-size: 1.1rem;
             letter-spacing: 2px;
         }
 
-        /* Active Selected Column Highlights */
+        /* Selection Highlights */
         th.active-col {
-            background-color: #0d6efd !important;
+            background-color: #0284c7 !important;
             color: #ffffff !important;
         }
 
         td.active-col {
-            background-color: #eff6ff !important;
-            color: #1d4ed8 !important;
-            font-weight: 600;
+            background-color: #e0f2fe !important;
         }
 
         .break-row td.active-col {
-            background-color: #dbeafe !important;
-            color: #1e40af !important;
+            background-color: #ffedd5 !important;
         }
 
         .col-hidden {
@@ -90,31 +113,33 @@
         }
     </style>
 </head>
-<body class="py-4 py-md-5">
+<body class="py-4">
 
 <div class="container max-width-lg">
     <div class="row justify-content-center">
-        <div class="col-12 col-xl-10">
+        <div class="col-12 col-xl-11">
             
             <div class="card card-custom">
-                <!-- Card Header -->
-                <div class="header-gradient p-4 text-center text-white position-relative">
-                    <h2 class="fw-bold mb-0 tracking-tight">
-                        <i class="bi bi-calendar3 me-2"></i>CLASS ROUTINE
-                    </h2>
+                <div class="header-fun p-4 text-center text-white position-relative">
+                    <h1 class="fw-bold mb-1">
+                        <i class="bi bi-rocket-takeoff-fill me-2"></i>GRADE 2 ROUTINE
+                    </h1>
+                    <p class="mb-0 text-white-50 font-monospace">Ready for a fun day of learning!</p>
                 </div>
 
-                <!-- Controls Body -->
                 <div class="card-body p-4">
-                    <div class="row justify-content-center align-items-center g-3 mb-4 no-print">
-                        <div class="col-auto">
-                            <label for="daySelect" class="col-form-label fw-semibold text-secondary">
-                                <i class="bi bi-funnel-fill me-1"></i>Select View:
-                            </label>
+                    <div class="row justify-content-between align-items-center g-3 mb-4 no-print">
+                        <div class="col-12 col-md-auto text-center text-md-start">
+                            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill day-badge">
+                                <i class="bi bi-star-fill me-1"></i> Keep Growing Everyday!
+                            </span>
                         </div>
-                        <div class="col-auto">
-                            <select id="daySelect" class="form-select form-select-md shadow-sm border-secondary-subtle" onchange="filterSchedule()">
-                                <option value="ALL">Show Full Week</option>
+                        <div class="col-12 col-md-auto d-flex justify-content-center align-items-center gap-2">
+                            <label for="daySelect" class="fw-bold text-secondary mb-0">
+                                <i class="bi bi-calendar-event me-1"></i>Select Day:
+                            </label>
+                            <select id="daySelect" class="form-select form-select-md shadow-sm border-info rounded-pill fw-bold text-primary" onchange="filterSchedule()">
+                                <option value="ALL">🌟 Show Full Week</option>
                                 <option value="SUNDAY">Sunday</option>
                                 <option value="MONDAY">Monday</option>
                                 <option value="TUESDAY">Tuesday</option>
@@ -124,12 +149,11 @@
                         </div>
                     </div>
 
-                    <!-- Responsive Table Container -->
-                    <div class="table-responsive rounded-3 border">
-                        <table class="table table-striped table-hover align-middle text-center table-custom mb-0">
+                    <div class="table-responsive rounded-4 border border-light-subtle shadow-sm">
+                        <table class="table align-middle text-center table-custom mb-0">
                             <thead>
                                 <tr>
-                                    <th class="period-header">Period</th>
+                                    <th class="period-header">Time / Period</th>
                                     <th data-day="SUNDAY">SUNDAY</th>
                                     <th data-day="MONDAY">MONDAY</th>
                                     <th data-day="TUESDAY">TUESDAY</th>
@@ -139,70 +163,69 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="period-header">One</td>
-                                    <td data-day="SUNDAY">Bengali I</td>
-                                    <td data-day="MONDAY">Bengali I</td>
-                                    <td data-day="TUESDAY">Bengali I</td>
-                                    <td data-day="WEDNESDAY">Bengali II</td>
-                                    <td data-day="THURSDAY">Bengali Creative Writing</td>
+                                    <td class="period-header">1st Period</td>
+                                    <td data-day="SUNDAY"><span class="subject-tag tag-bengali"><i class="bi bi-book-half"></i> Bengali I</span></td>
+                                    <td data-day="MONDAY"><span class="subject-tag tag-bengali"><i class="bi bi-book-half"></i> Bengali I</span></td>
+                                    <td data-day="TUESDAY"><span class="subject-tag tag-bengali"><i class="bi bi-book-half"></i> Bengali I</span></td>
+                                    <td data-day="WEDNESDAY"><span class="subject-tag tag-bengali"><i class="bi bi-journal-bookmark-fill"></i> Bengali II</span></td>
+                                    <td data-day="THURSDAY"><span class="subject-tag tag-bengali"><i class="bi bi-pencil-fill"></i> Bengali Cr. Wr.</span></td>
                                 </tr>
                                 <tr>
-                                    <td class="period-header">Two</td>
-                                    <td data-day="SUNDAY">Library</td>
-                                    <td data-day="MONDAY">Music</td>
-                                    <td data-day="TUESDAY">Art</td>
-                                    <td data-day="WEDNESDAY">Drama</td>
-                                    <td data-day="THURSDAY">Games</td>
+                                    <td class="period-header">2nd Period</td>
+                                    <td data-day="SUNDAY"><span class="subject-tag tag-english"><i class="bi bi-journal-richtext"></i> Library</span></td>
+                                    <td data-day="MONDAY"><span class="subject-tag tag-music"><i class="bi bi-music-note-beamed"></i> Music</span></td>
+                                    <td data-day="TUESDAY"><span class="subject-tag tag-art"><i class="bi bi-palette-fill"></i> Art</span></td>
+                                    <td data-day="WEDNESDAY"><span class="subject-tag tag-art"><i class="bi bi-masks"></i> Drama</span></td>
+                                    <td data-day="THURSDAY"><span class="subject-tag tag-games"><i class="bi bi-controller"></i> Games</span></td>
                                 </tr>
                                 <tr>
-                                    <td class="period-header">Three</td>
-                                    <td data-day="SUNDAY">English Language</td>
-                                    <td data-day="MONDAY">English Language</td>
-                                    <td data-day="TUESDAY">English Language</td>
-                                    <td data-day="WEDNESDAY">English Creative Writing</td>
-                                    <td data-day="THURSDAY">English Creative Writing</td>
+                                    <td class="period-header">3rd Period</td>
+                                    <td data-day="SUNDAY"><span class="subject-tag tag-english"><i class="bi bi-chat-text-fill"></i> Eng. Lang</span></td>
+                                    <td data-day="MONDAY"><span class="subject-tag tag-english"><i class="bi bi-chat-text-fill"></i> Eng. Lang</span></td>
+                                    <td data-day="TUESDAY"><span class="subject-tag tag-english"><i class="bi bi-chat-text-fill"></i> Eng. Lang</span></td>
+                                    <td data-day="WEDNESDAY"><span class="subject-tag tag-english"><i class="bi bi-pencil-square"></i> Eng Cr. Wr.</span></td>
+                                    <td data-day="THURSDAY"><span class="subject-tag tag-english"><i class="bi bi-pencil-square"></i> Eng Cr. Wr.</span></td>
                                 </tr>
                                 <tr class="break-row">
-                                    <td class="period-header">BREAK</td>
-                                    <td data-day="SUNDAY">BREAK</td>
-                                    <td data-day="MONDAY">BREAK</td>
-                                    <td data-day="TUESDAY">BREAK</td>
-                                    <td data-day="WEDNESDAY">BREAK</td>
-                                    <td data-day="THURSDAY">BREAK</td>
+                                    <td class="period-header">SNACK TIME</td>
+                                    <td data-day="SUNDAY"><i class="bi bi-apple me-1"></i> RECESS</td>
+                                    <td data-day="MONDAY"><i class="bi bi-cup-straw me-1"></i> RECESS</td>
+                                    <td data-day="TUESDAY"><i class="bi bi-apple me-1"></i> RECESS</td>
+                                    <td data-day="WEDNESDAY"><i class="bi bi-cup-straw me-1"></i> RECESS</td>
+                                    <td data-day="THURSDAY"><i class="bi bi-apple me-1"></i> RECESS</td>
                                 </tr>
                                 <tr>
-                                    <td class="period-header">Four</td>
-                                    <td data-day="SUNDAY">Science</td>
-                                    <td data-day="MONDAY">Science</td>
-                                    <td data-day="TUESDAY">Religion / Moral Test</td>
-                                    <td data-day="WEDNESDAY">Science</td>
-                                    <td data-day="THURSDAY">Science</td>
+                                    <td class="period-header">4th Period</td>
+                                    <td data-day="SUNDAY"><span class="subject-tag tag-science"><i class="bi bi-tree-fill"></i> Science</span></td>
+                                    <td data-day="MONDAY"><span class="subject-tag tag-science"><i class="bi bi-tree-fill"></i> Science</span></td>
+                                    <td data-day="TUESDAY"><span class="subject-tag tag-rel"><i class="bi bi-heart-fill"></i> Religion / MT</span></td>
+                                    <td data-day="WEDNESDAY"><span class="subject-tag tag-science"><i class="bi bi-tree-fill"></i> Science</span></td>
+                                    <td data-day="THURSDAY"><span class="subject-tag tag-science"><i class="bi bi-tree-fill"></i> Science</span></td>
                                 </tr>
                                 <tr>
-                                    <td class="period-header">Five</td>
-                                    <td data-day="SUNDAY">Mathematics</td>
-                                    <td data-day="MONDAY">Mathematics</td>
-                                    <td data-day="TUESDAY">Mathematics</td>
-                                    <td data-day="WEDNESDAY">Mathematics</td>
-                                    <td data-day="THURSDAY">Mathematics</td>
+                                    <td class="period-header">5th Period</td>
+                                    <td data-day="SUNDAY"><span class="subject-tag tag-maths"><i class="bi bi-calculator-fill"></i> Maths</span></td>
+                                    <td data-day="MONDAY"><span class="subject-tag tag-maths"><i class="bi bi-calculator-fill"></i> Maths</span></td>
+                                    <td data-day="TUESDAY"><span class="subject-tag tag-maths"><i class="bi bi-calculator-fill"></i> Maths</span></td>
+                                    <td data-day="WEDNESDAY"><span class="subject-tag tag-maths"><i class="bi bi-calculator-fill"></i> Maths</span></td>
+                                    <td data-day="THURSDAY"><span class="subject-tag tag-maths"><i class="bi bi-calculator-fill"></i> Maths</span></td>
                                 </tr>
                                 <tr>
-                                    <td class="period-header">Six</td>
-                                    <td data-day="SUNDAY">English Literature</td>
-                                    <td data-day="MONDAY">English Spelling and Dictation</td>
-                                    <td data-day="TUESDAY">English Literature</td>
-                                    <td data-day="WEDNESDAY">English Spelling and Dictation</td>
-                                    <td data-day="THURSDAY">English Literature</td>
+                                    <td class="period-header">6th Period</td>
+                                    <td data-day="SUNDAY"><span class="subject-tag tag-english"><i class="bi bi-book-fill"></i> Eng. Lit</span></td>
+                                    <td data-day="MONDAY"><span class="subject-tag tag-english"><i class="bi bi-mic-fill"></i> Eng. S/D</span></td>
+                                    <td data-day="TUESDAY"><span class="subject-tag tag-english"><i class="bi bi-book-fill"></i> Eng. Lit</span></td>
+                                    <td data-day="WEDNESDAY"><span class="subject-tag tag-english"><i class="bi bi-mic-fill"></i> Eng. S/D</span></td>
+                                    <td data-day="THURSDAY"><span class="subject-tag tag-english"><i class="bi bi-book-fill"></i> Eng. Lit</span></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-                <!-- Footer area -->
                 <div class="card-footer bg-white border-0 text-center pb-4 no-print">
-                    <button onclick="window.print()" class="btn btn-outline-secondary btn-sm rounded-pill px-3">
-                        <i class="bi bi-printer me-1"></i> Print Schedule
+                    <button onclick="window.print()" class="btn btn-info text-white fw-bold rounded-pill px-4 shadow-sm">
+                        <i class="bi bi-printer-fill me-1"></i> Print Routine
                     </button>
                 </div>
             </div>
@@ -211,20 +234,27 @@
     </div>
 </div>
 
-<!-- Bootstrap 5 JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    const daysMap = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY"];
+    // JavaScript getDay(): 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday
+    const daysMap = {
+        0: "SUNDAY",
+        1: "MONDAY",
+        2: "TUESDAY",
+        3: "WEDNESDAY",
+        4: "THURSDAY"
+    };
 
     function init() {
-        const todayIndex = new Date().getDay(); // 0 = Sunday, 1 = Monday, etc.
+        const todayIndex = new Date().getDay();
         const todayName = daysMap[todayIndex];
         const select = document.getElementById('daySelect');
 
         if (todayName) {
             select.value = todayName;
         } else {
+            // For Friday (5) or Saturday (6), default to full schedule view
             select.value = "ALL";
         }
         filterSchedule();
@@ -248,7 +278,8 @@
         });
     }
 
-    window.onload = init;
+    // Run automatically when the DOM content is fully loaded
+    document.addEventListener("DOMContentLoaded", init);
 </script>
 
 </body>
